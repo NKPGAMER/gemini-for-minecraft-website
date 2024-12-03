@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini for Minecraft BE</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Gemini Assistant for Minecraft Bedrock Edition</h1>
+    <p>Bạn muốn tích hợp 1 trợ lý vào Minecraft để hỗ trợ trong quá trình chơi? Hay cảm thấ cô đơn vì chơi một mình. Hãy
+      thử dùng Gemini assistant, một trợ lý có thể cung cấp cho bạn những thông tin cần thiết và có thể trò chuyện với
+      bạn.</p>
+
+    <h2>Tải xuống & cấu hình</h2>
+    <ul>
+      <li>
+        <h3>Tải Gemini Assistant</h3>
+        <ul>
+          <li><a href="https://github.com/NKPGAMER/gemini-for-minecraft" target="_blank">Nhấn vào đây</a> để tải xuống.
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Lấy API</h3>
+        <ul>
+          <li>Đi đến trang của Gemini API hoặc <a href="https://aistudio.google.com/apikey">nhấn vào đây</a></li>
+          <li>Đăng nhập tài khoản</li>
+          <li>Nhấn vào 'Tạo khoá API' (Create API key) và làm theo các yêu cầu để lấy key</li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Cấu hình</h3>
+        <ul>
+          <li>Giải nén tệp vừa tải xuống</li>
+          <li>Mở thư mục vừa giải nén. Vào thư mục <code>scripts</code> và mở tệp <code>config.js</code></li>
+          <li>Dán API vào cho <code>config['API']</code>. <br>Mẫu:
+            <code>config['API'] = "ENTER_YOUR_API" <br>=> config['API'] = "abc123456789"</code></li>
+          <li>Có thể tuỳ chỉnh một vài thứ tại đó</li>
+          <li>Lưu tệp</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Nhập Gemini vào Minecraft</h2>
+    <ul>
+      <li>
+        <h3>Thiết lập Bedrock Server</h3>
+
+        <div class="notifi">
+          <strong>Dành cho chạy server local, bỏ qua nếu dùng cho các server online</strong>
+        </div>
+        <ul>
+          <li>Tải Bedrock Server từ trang chủ của <a
+              href="https://www.minecraft.net/en-us/download/server/bedrock">Minecraft</a></li>
+          <li>Giải nén tệp vừa tải về</li>
+          <li>Khởi chạy <code>bedrock_server.exe</code> để thiết lập các dữ liệu cần thiết</li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Kích hoạt Module</h3>
+        <div class="note">
+          <strong>Chú ý:</strong> Nếu thiếu module thì Gemini sẽ không hoạt động
+        </div>
+        <ul>
+          <li>Mở thư mục của <code>bedrock_server</code></li>
+          <li>Đi đến thư mục <code>config/default/</code></li>
+          <li>Mở tệp <code>permissions.json</code></li>
+        </ul>
+        <h4>Bên trong tệp <code>permissions.json</code></h4>
+        <pre><code>{
+  "allowed_modules": [
+    "@minecraft/server-gametest",
+    "@minecraft/server",
+    "@minecraft/server-ui",
+    "@minecraft/server-admin",
+    "@minecraft/server-editor"
+  ]
+}</code></pre>
+        <h4>Nếu không có <code>@minecraft/server-net</code> hãy thêm vào. Kết quả sẽ như sau:</h4>
+
+        <pre><code>{
+  "allowed_modules": [
+    "@minecraft/server-gametest",
+    "@minecraft/server",
+    "@minecraft/server-ui",
+    "@minecraft/server-admin",
+    "@minecraft/server-editor",
+    <span style="color: #3e3e;">"@minecraft/server-net"</span>
+  ]
+}</code></pre>
+
+      <div class="notifi">Sau khi thêm nhớ kiểm tra lại cho đúng nha. Hoặc copy ở trên rồi paste vào cũng được :)</div>
+      </li>
+
+      <li>
+        <h3>Thiết lập thế giới</h3>
+        <ul>
+          <li>Tạo một thế giới mới hoặc sao lưu thế giới hiện có</li>
+          <li>Trong phần tuỳ chỉnh thế giới hãy bật tất cả tính năng thử nghiệm</li>
+          <li>Sau khi đã có thế giới thì đến thư mục chứa thế giới các thế giới</li>
+          <li>Sao chép thế giới</li>
+          <li>Đến thư mục của Server và vào thư mục <code>world</code></li>
+          <li>Tại đây nếu có thư mục <code>Bedrock level</code> thì xoá nó đi</li>
+          <li>Dán thế giới đã vào và đổi tên thành <code style="color: #3e3e;">Bedrock level</code></li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Đưa Gemini Assistant vào server</h3>
+        <ul>
+          <li>Sao chép thư mục của Gemini Assistant mà ta vừa thiết lập bên trên</li>
+          <li>Đến thư mục của Server và dán vào <code>development_behavior_packs</code></li>
+          <li>Quay lại và vào thư mục <code>worlds/Bedrock level</code></li>
+          <li>Tại đây nếu chưa có tệp <span style="color: #3e3e;">world_behavior_packs.json</span> hãy tạo nó</li>
+          <li>Mở tệp <span style="color: #3e3e;">world_behavior_packs.json</span></li>
+        </ul>
+        <h4>Bên trong tệp <code>world_behavior_packs.json:</code></h4>
+        <h5>Nếu là tệp mới tạo hãy dán mã sau vào:</h5>
+        <pre>[
+  {
+    "pack_id" : "eb75f2f2-aa22-4cba-8fc1-addcab8ac9da",
+   "version" : [ 1, 0, 0 ]
+  }
+]</pre>
+        <h5>Nếu đã có tệp và bên trong tệp đã có <code style="color: red;">[]</code>. Chỉ cần thêm mã sau vào []:</h5>
+        <pre>{
+  "pack_id" : "eb75f2f2-aa22-4cba-8fc1-addcab8ac9da",
+  "version" : [ 1, 0, 0 ]
+}</pre>
+      </li>
+
+      <li>Khởi động server</li>
+    </ul>
+    <div class="notifi">Nếu trong console có báo <pre>[SERVER] Pack Stack - [00][§l§bGemini §fArtificial intelligence] [packid_ver][eb75f2f2-aa22-4cba-8fc1-addcab8ac9da_1.0.0] [path][development_behavior_packs/Gemini AI]</pre>Thì bạn đã làm đúng rồi đấy :)</div>
+
+    <div class="note">Cần server để hoạt động. Trên Android nếu không có server mà vẫn muốn sử dụng thì hãy tạo một win ảo và chạy trên đó. <a href="setupBox.html">Xem thêm</a></div>
+  </div>
+</body>
+
+</html>

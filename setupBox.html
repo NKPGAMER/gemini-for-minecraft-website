@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <ul>
+      <li>
+        <h3>Ứng dụng cần thiết</h3>
+        <ul>
+          <li><a href="https://www.mediafire.com/file/8lhltv1z4cbx17s/com.termux_118.apk/file">Termux</a></li>
+          <li><a
+              href="https://www.mediafire.com/file/y99xr7qmig1nmj6/termux-x11-arm64-v8a-debug-latest.apk/file">Termux:X11</a>
+          </li>
+        </ul>
+      </li>
+  
+      <li>
+        <h3>Thiết lập mobox</h3>
+        <ul>
+          <li>Mở Termux</li>
+          <li>
+            <h4>Nhập các lệnh sau</h4>
+            <pre>
+pkg upgrade
+curl -s -o ~/x https://raw.githubusercontent.com/olegos2/mobox/main/install && . ~/x
+            </pre>
+            <h4>Nếu có hỏi Y/n thì cứ nhập Y. Nếu có để default=... thì cứ bâm enter</h4>
+          </li>
+
+          <li>Sẽ có phần nó sẽ hỏi <pre>Select an option
+1) Install previous mobox with box86
+2) Install new mobox wow64 version</pre> thì hãy chọn phiên bản phù hợp với thiết bị</li>
+
+          <li>Sau khi hoàn tất. Nhập <pre>mobox</pre> và chọn start wine để chạy</li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Chạy server</h3>
+        <h4>Sau khi vào sẽ có giao diện như sau:</h4>
+        <img src="/images/Screenshot_2024-12-03-12-03-26-586_com.termux.x11.jpg" alt="" width="100%">
+        <ul>
+          <li>Mở ổ đĩa Z</li>
+          <li>Đi đến <code>home/storage/shared</code></li>
+          <li>Đi đến thư mục của server</li>
+          <li>Chạy <code>bedrock_server.exe</code></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
