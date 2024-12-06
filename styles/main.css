@@ -67,7 +67,7 @@ ul:not(ul ul) > li::before {
   top: 5px;
   width: 16px;
   height: 16px;
-  background-image: url('/images/gemini-icon.png');
+  background-image: url('images/gemini-icon.png');
   background-size: cover;
   background-repeat: no-repeat;
 }
